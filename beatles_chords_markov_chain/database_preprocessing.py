@@ -43,23 +43,6 @@ def get_chord_roots():
     return chords_sequence_dict
 
 
-def convert_notes_to_numbers(notes_dict):
-    """
-    Maps each chord root inside the sequences into values between 0 and 11.
-
-    :param notes_dict: dictionary of chord roots lists
-    :return: dictionary of numeric notes list
-    """
-    chord_numbers = {}
-    for song, chords in notes_dict.items():
-        if isinstance(chords, list):
-            # creates a new list with the new mapping
-            chord_numbers[song] = [amp.musical_note_to_midi(x) for x in chords]
-        else:
-            chord_numbers[song] = amp.musical_note_to_midi(chords)
-    return chord_numbers
-
-
 def get_rootkeys():
     """
     Gets a dictionary containing for each song
@@ -75,21 +58,29 @@ def get_rootkeys():
     for filename in os.listdir(rootkey_path):
         # reading the file
         new_dataframe = pd.read_csv(os.path.join(rootkey_path, filename), sep='\t', header=None)
+
+        # keeping only the songs without a key change
         if new_dataframe.shape[0] == 1:
             key = list(new_dataframe[3])[0]
             if ':' not in key:
                 rootkey_dict[filename] = key
+
     return rootkey_dict
 
 
-# one list of chord roots for each song
-chord_roots_dict = get_chord_roots()
+def convert_notes_to_numbers(notes_dict):
+    """
+    Maps each chord root inside the sequences into values between 0 and 11.
 
-# one list of numeric note values (between 0 and 11) for each song
-chord_numbers_dict = convert_notes_to_numbers(chord_roots_dict)
+    :param notes_dict: dictionary of chord roots lists
+    :return: dictionary of numeric notes list
+    """
+    chord_numbers = {}
+    for song, chords in notes_dict.items():
+        if isinstance(chords, list):
+            # creates a new list with the new mapping
+            chord_numbers[song] = [amp.musical_note_to_midi(x) for x in chords]
+        else:
+            chord_numbers[song] = amp.musical_note_to_midi(chords)
 
-# one rootkey for each song
-rootkey_dict = get_rootkeys()
-
-# one rootkey as a numeric value (between 0 and 11) for each song
-rootkey_numbers_dict = convert_notes_to_numbers(rootkey_dict)
+    return chord_numbers
