@@ -1,1 +1,1 @@
-from database_preprocessing import chord_roots_dict, chord_numbers_dict
+from database_preprocessing import chord_roots_dict, chord_numbers_dict, rootkey_dict, rootkey_numbers_dict
