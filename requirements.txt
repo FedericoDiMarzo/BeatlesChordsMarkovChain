@@ -1,0 +1,12 @@
+abstract-melody-parser==0.0.2
+decorator==4.4.2
+joblib==1.0.1
+networkx==2.5.1
+numpy==1.20.2
+pandas==1.2.4
+pomegranate==0.14.5
+python-dateutil==2.8.1
+pytz==2021.1
+PyYAML==5.4.1
+scipy==1.6.3
+six==1.16.0
