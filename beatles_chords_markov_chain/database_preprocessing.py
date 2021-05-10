@@ -1,9 +1,11 @@
 import pandas as pd
 import os
 import abstract_melody_parser as amp
+import beatles_chords_markov_chain
 
 # paths to the database
-root = os.path.join('..', 'beatles_chords_database')
+cwd = os.path.dirname(beatles_chords_markov_chain.__file__)
+root = os.path.join(cwd, '..', 'beatles_chords_database')
 rootkey_path = os.path.join(root, 'rootkey')
 chords_path = os.path.join(root, 'chords')
 
