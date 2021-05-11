@@ -2,6 +2,7 @@ import pomegranate as pg
 from processed_data import intervals_dict
 
 # order of the markov chain
+# TODO: fine tune
 markov_chain_order = 3
 
 
