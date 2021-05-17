@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-import abstract_melody_parser as amp
+import melodically
 import beatles_chords_markov_chain
 
 # paths to the database
@@ -81,8 +81,8 @@ def convert_notes_to_numbers(notes_dict):
     for song, chords in notes_dict.items():
         if isinstance(chords, list):
             # creates a new list with the new mapping
-            chord_numbers[song] = [amp.musical_note_to_midi(x) for x in chords]
+            chord_numbers[song] = [melodically.std_to_midi(x) for x in chords]
         else:
-            chord_numbers[song] = amp.musical_note_to_midi(chords)
+            chord_numbers[song] = melodically.std_to_midi(chords)
 
     return chord_numbers
