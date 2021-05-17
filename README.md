@@ -4,7 +4,7 @@ This python module was born after a week of experiments with the pomegranate lib
 ## Installation
 The package can easily be installed using the pip package manager.
 ```shell
-pip install beatles-chords-markov-chain
+pip install beatles_chords_markov_chain
 ```
 
 # Notation
